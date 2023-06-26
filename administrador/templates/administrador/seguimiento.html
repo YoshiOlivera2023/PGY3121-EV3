@@ -1,0 +1,30 @@
+{% extends "administrador/base.html" %}
+{% load static %}
+
+
+
+{% block title %} TheCleta/Seguimiento {% endblock %}
+
+{% block content %}
+      <br><br><br>
+        <div class="container">
+            <div class="row">                
+                <div class="col-sm-12">
+                    <div class="col-lg-6 mx-auto">
+                      <form id="buscar">   
+                             
+                        <div class="form-group input-group-lg">
+                          <label for="NroSeguimiento" class="form-label"><h5>Ingrese el n&uacute;mero de seguimiento</h5></label>  
+                          <input type="text" class="form-control" id="NroSeguimiento" onblur="valSeguimiento(this)" placeholder="Ej.: 111222333444">                          
+                          <div id="mSeguimiento" class=""></div>
+                          <br>
+                        </div>  
+                        <button class="w-100 btn btn-lg btn-warning" onclick="realizarSeg()" type="submit">Buscar</button>
+                      </form><br><br>
+                      <div id="mBusqueda" class="col-md-12"></div> 
+                    </div>
+                </div>            
+            <div>
+        </div>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

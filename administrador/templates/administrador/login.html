@@ -1,0 +1,40 @@
+{% extends "administrador/base.html" %}
+{% load static %}
+
+
+
+{% block title %} TheCleta/Log In {% endblock %}
+
+{% block content %}
+      
+        <div class="container">
+            <div class="row">              
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                  <form id="formulario">
+                    <br>
+                    <br>
+                    <div class="form-floating">
+                      <input type="email" class="form-control" id="usuario" placeholder="name@example.com">
+                      <label for="usuario">Email</label>
+                    </div>
+                    <div class="form-floating">
+                      <input type="password" class="form-control" id="password" placeholder="Password">
+                      <label for="password">Password</label>
+                    </div>
+                
+                    <div class="checkbox mb-3">
+                      <label>
+                        <input type="checkbox" value="remember-me"> Recordarme
+                      </label>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-warning" id="ingresar" type="submit">Ingresar</button>
+                  </form>
+                  <br><br>
+                      <div id="error" class="col-md-12"></div> 
+                </div>
+                <div class="col-sm-4"></div>
+            <div>
+        </div>
+    
+{% endblock %}

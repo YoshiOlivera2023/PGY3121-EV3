@@ -1,0 +1,73 @@
+{% extends "administrador/base.html" %}
+{% load static %}
+
+{% block title %} TheCleta/Ayuda {% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="container">
+                    <br>
+                    <div class="accordion accordion-flush" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    ¿Cómo creo una cuenta?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Para crear una cuenta, por favor siga los siguientes pasos:
+                                    <ol>
+                                        <li>Busca el botón o enlace "Registrar" en la página web y haz clic en él.</li>
+                                        <li>Ingresa tus datos personales en el formulario de registro. Por lo general, se te pedirá que ingreses tu nombre completo, dirección de correo electrónico.</li>
+                                        <li>Completa cualquier otra información adicional que se te solicite, como tu fecha de nacimiento o información de contacto.</li>
+                                        <li>Haz clic en "Registrar" o "Crear cuenta" para completar el proceso de registro.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    ¿Cómo puedo restablecer mi contraseña?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Para restablecer su contraseña, por favor siga los siguientes pasos:
+                                    <ol>
+                                        <li>Busca el enlace "Olvidé mi contraseña" en la página web y haz clic en él.</li>
+                                        <li>Ingresa la dirección de correo electrónico asociada con tu cuenta y sigue las instrucciones para verificar que eres el propietario de la cuenta.</li>
+                                        <li>Si se te solicita, responde a las preguntas de seguridad que hayas establecido al crear tu cuenta.</li>
+                                        <li>Se te enviará un correo electrónico con un enlace o un código para restablecer tu contraseña.</li>
+                                        <li>Haz clic en el enlace o ingresa el código enviado al correo electrónico y sigue las instrucciones para restablecer tu contraseña.</li>
+                                        <li>Ingresa tu nueva contraseña y confírmala para completar el proceso de restablecimiento de contraseña.</li>
+                                    </ol>
+                                    Una vez que hayas restablecido tu contraseña, podrás iniciar sesión en la página web con tu dirección de correo electrónico y la nueva contraseña para acceder a tu cuenta.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    ¿Cómo contacto con el soporte técnico?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Puede contactar con nuestro equipo de soporte técnico en escribiendo al siguiente correo:<br>
+                                    <b>thecletateam@email.cl</b>
+                                    o puedes llamarnos al <b>+56232449773</b> (L-V: 9:00 A 18:00 HRS.)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
