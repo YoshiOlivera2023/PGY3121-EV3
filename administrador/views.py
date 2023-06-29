@@ -13,7 +13,7 @@ def nosotros(request):
 
 def productos(request):
     context = {}
-    return render(request, "administrador/productos.html", context)
+    return render(request, "bicicletas/productos.html", context)
 
 def seguimiento(request):
     context = {}

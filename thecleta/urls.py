@@ -24,3 +24,4 @@ urlpatterns = [
     path('pagos/', include('pagos.urls')),
     path('seguimiento/', include('seguimiento.urls')),
 ]
+

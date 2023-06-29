@@ -1,0 +1,50 @@
+{% extends "administrador/base.html" %}
+{% load static %}
+
+{% block title %}TheCleta/Productos{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h1 class="text-center">Listado de bicicletas</h1>
+                <br>
+                <table class="table table-bordered">
+                    {% if bicicletas %}
+                        <thead class="thead-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Marca</th>
+                                <th>Precio</th>   
+                                <th>Eliminar</th> 
+                                <th>Modificar</th>  
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for b in bicicletas %}
+                                <tr>
+                                    <td>{{ b.id_bicicleta }}</td>
+                                    <td>{{ b.nombre_bicicleta }}</td>
+                                    <td>{{ b.id_categoria.nombre_categoria }}</td>
+                                    <td>{{ b.id_marca.nombre_marca }}</td>
+                                    <td>${{ b.precio }}</td>
+                                    <td>
+                                        <a href="{% url 'delBici' pk=b.id_bicicleta %}" class="btn btn-danger btn-sm">Eliminar</a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'editBici' pk=b.id_bicicleta %}" class="btn btn-primary btn-sm">Modificar</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    {% endif %}
+                </table>
+                <div class="text-center">
+                    <a href="{% url 'formBici' %}" class="btn btn-warning">Agregar bicicletas</a>
+                </div>
+            </div>
+        </div>        
+    </div>
+{% endblock %}

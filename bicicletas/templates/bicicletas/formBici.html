@@ -2,50 +2,75 @@
 {% load static %}
 
 {% block title %}
-  formBici
+  formBici/Registro de bicicletas
 {% endblock %}
 
 {% block content %}
 
 <div class="container">
-    <div class="row">
-      <div class="col-sm">
-       
-      </div>
-      <div class="col-sm" style="text-align: center;" >
-        <form>
-            <label for="marca">Marca:</label>
-            <input type="text" id="marca" name="marca" required><br><br>
-        
-            <label for="modelo">Modelo:</label>
-            <input type="text" id="modelo" name="modelo" required><br><br>
-        
-            <label for="color">Color:</label>
-            <input type="text" id="color" name="color" required><br><br>
-        
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio" name="precio" required><br><br>
-        
-            <label for="descripcion">Descripción:</label><br>
-            <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea><br><br>
-        
-            <label for="imagen">Imagen:</label>
-            <input type="file" id="imagen" name="imagen" accept="image/*" required><br><br>
-        
-            <input type="submit" value="Agregar Bicicleta">
-        
+  <div class="row">
+    <div class="col-sm"></div>
+    <div class="col-sm-8">
+      <h1 class="text-center">Registro de bicicletas</h1>
+      <br>
+      <form action="{% url 'formBici' %}" method="POST">
+        {% csrf_token %}
 
+        <div class="form-group">
+          <label for="nombre" class="form-label"><b>Nombre: </b>(*)</label>
+          <input type="text" id="nombre" name="nombre" class="form-control" required>
+        </div><br>
 
+        <div class="form-group">
+          <label for="marca" class="form-label"><b>Marca: (*)</b></label>
+          <select id="marca" name="marca" class="form-select" required>
+            <option selected disabled>Seleccione una marca</option>
+            {% for m in marcas %}
+            <option value="{{ m.id_marca }}">{{ m.nombre_marca }}</option>
+            {% endfor %}
+          </select>
+        </div><br>
 
-      </div>
-      <div class="col-sm">
-       
-      </div>
+        <div class="form-group">
+          <label for="categoria" class="form-label"><b>Categoría: (*)</b></label>
+          <select id="categoria" name="categoria" class="form-select" required>
+            <option selected disabled>Seleccione una categoría</option>
+            {% for c in categorias %}
+            <option value="{{ c.id_categoria }}">{{ c.nombre_categoria }}</option>
+            {% endfor %}
+          </select>
+        </div><br>
+
+        <div class="form-group">
+          <label for="precio" class="form-label"><b>Precio: (*)</b></label>
+          <input type="number" id="precio" name="precio" class="form-control" required>
+        </div><br>
+
+        <div class="form-group">
+          <label for="descripcion" class="form-label"><b>Descripción: (*)</b></label>
+          <textarea id="descripcion" name="descripcion" rows="4" cols="50" class="form-control"></textarea>
+        </div><br>
+
+        <div class="form-group">
+          <label for="imagen" class="form-label"><b>Imagen: (*)</b></label>
+          <input type="file" id="imagen" name="imagen" accept="image/*" class="form-control-file" required>
+        </div><br>
+
+        <div class="form-group text-center">
+          <div class="btn-group" role="group">
+            <input type="submit" value="Agregar Bicicleta" class="btn btn-warning">
+          </div>
+          <div class="btn-group" role="group">
+            <a href="{% url 'crudBici' %}" class="btn btn-primary">Volver</a>
+          </div>
+        </div>
+
+      </form>
+
     </div>
+
+    <div class="col-sm"></div>
   </div>
-
-
-
-
+</div>
 
 {% endblock %}
