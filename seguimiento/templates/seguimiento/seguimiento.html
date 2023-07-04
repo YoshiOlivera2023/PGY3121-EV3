@@ -1,0 +1,48 @@
+{% extends "administrador/base.html" %}
+{% load static %}
+
+{% block title %}TheCleta/Seguimiento{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <form id="buscar" class="mt-5" method="POST">
+                <div class="form-group">
+                    <label for="NroSeguimiento"><h5>Ingrese el número de seguimiento</h5></label>
+                    <input type="text" class="form-control" id="NroSeguimiento" name="seguimiento" onblur="valSeguimiento(this)" placeholder="Ej.: 111222333444">
+                    <div id="mSeguimiento" class="form-text"></div>
+                </div>
+                <button class="btn btn-warning btn-md btn-block" onclick="realizarSeg()" type="submit">Buscar</button>
+            </form>
+
+            {% if envio %}
+                <h2>Información del producto</h2>
+                <p>Nombre: {{ envio.id_pedido.nombre_producto }}</p>
+                <p>Precio: {{ envio.id_pedido.precio_producto }}</p>
+
+                <h2>Seguimiento del envío</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ envio.fecha_envio }}</td>
+                            <td>{{ envio.id_est_envio.nombre_estado_env }}</td>
+                            <td>{{ envio.id_ubicacion.direccion }}, {{ envio.id_ubicacion.id_comuna.nombre_comuna }}, {{ envio.id_ubicacion.id_region.nombre_region }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+              {% else %}
+              <div id="mBusqueda" class="mt-4"></div>
+            {% endif %}   
+              
+        </div>
+    </div>
+</div>
+{% endblock %}

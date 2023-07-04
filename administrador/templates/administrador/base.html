@@ -15,9 +15,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}">
-    <script text="text/javascript" src="{% static 'js/validation.js' %}"></script>
-    <script text="text/javascript" src="{% static 'js/funciones.js' %}"></script>
-    <script text="text/javascript" src="{% static 'js/api.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/validation.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/funciones.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/api.js' %}"></script>
     
     <title>
         {% block title %}  {% endblock %}
@@ -28,33 +28,41 @@
   </head>
 
   <body>
-
-    <header class="p-3 bg-dark text-white">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <img src="{% static 'img/logo.png' %}" href="index" class="bd-placeholder-img" width="40px" height="40px" alt="thecleta" />        
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="index" class="nav-link px-2 text-white">Home</a></li>
-                <li><a href="nosotros" class="nav-link px-2 text-white">Nosotros</a></li>
-                <li><a href="productos" class="nav-link px-2 text-white">Productos</a></li>
-                <li><a href="ayuda" class="nav-link px-2 text-white">Ayuda</a></li>
-                <li><a href="seguimiento" class="nav-link px-2 text-white">Seguimiento</a></li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    --USER--
+      <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="{% url 'index' %}">
+                    <img src="{% static 'img/logo.png' %}" class="bd-placeholder-img" width="40px" height="40px" alt="thecleta" />
+                </a>        
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="{% url 'index' %}" class="nav-link px-2 text-white">Home</a></li>
+                    <li><a href="{% url 'nosotros' %}" class="nav-link px-2 text-white">Nosotros</a></li>
+                    <li><a href="{% url 'productos' %}" class="nav-link px-2 text-white">Productos</a></li>
+                    <li><a href="{% url 'ayuda' %}" class="nav-link px-2 text-white">Ayuda</a></li>
+                    <li><a href="{% url 'seguimiento' %}" class="nav-link px-2 text-white">Seguimiento</a></li>
+                    <li><a href="#" class="nav-link px-2 text-white">
+                        {% if request.user.is_authenticated %}
+                          <b>Bienvenido, {{ user.username }}</b>
+                        {% endif %} 
+                      </a>
+                    </li>
+                </ul>        
+                <div class="text-end">
+                  {% if request.user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="btn btn-outline-light me-2" >Cerrar sesión</a>
+                  {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-outline-light me-2" >Iniciar Sesión</a>
+                  {% endif %}
+    
+                  <a href="{% url 'registro' %}" class="btn btn-warning">Registrar</a>
+    
+                  <a href="{% url 'carrito_compras' %}">
+                    <img src="{% static 'img/carro.png' %}" class="bd-placeholder-img" width="48px" height="40px" alt="carrito" />
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Cerrar sesión</a>
-                  </div>
-                </li>
-            </ul>        
-            <div class="text-end">
-              <a href="login" class="btn btn-outline-light me-2" >Ingresar</a>
-              <a href="registro" class="btn btn-warning">Registrar</a>
+                </div>
+                
             </div>
-            
         </div>
-      </div>
     </header>
     <br><br>
 
@@ -67,15 +75,15 @@
     <div class="container">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
           <p class="col-md-4 mb-0 text-muted">© 2023 Grupo Morales - Olivera - Toledo</p>
-          
-          <img src="{% static 'img/logo.png' %}" class="bd-placeholder-img" width="40px" height="40px" alt="thecleta" />
-          
+          <a href="{% url 'index' %}">
+            <img src="{% static 'img/logo.png' %}" class="bd-placeholder-img" width="40px" height="40px" alt="thecleta" />
+          </a>
           <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="index" class="nav-link px-2 text-muted">Home</a></li>
-            <li class="nav-item"><a href="nosotros" class="nav-link px-2 text-muted">Nosotros</a></li>
-            <li class="nav-item"><a href="productos" class="nav-link px-2 text-muted">Productos</a></li>
-            <li class="nav-item"><a href="ayuda" class="nav-link px-2 text-muted">Ayuda</a></li>
-            <li class="nav-item"><a href="seguimiento" class="nav-link px-2 text-muted">Seguimiento</a></li>
+            <li class="nav-item"><a href="{% url 'index' %}" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="{% url 'nosotros' %}" class="nav-link px-2 text-muted">Nosotros</a></li>
+            <li class="nav-item"><a href="{% url 'productos' %}" class="nav-link px-2 text-muted">Productos</a></li>
+            <li class="nav-item"><a href="{% url 'ayuda' %}" class="nav-link px-2 text-muted">Ayuda</a></li>
+            <li class="nav-item"><a href="{% url 'seguimiento' %}" class="nav-link px-2 text-muted">Seguimiento</a></li>
           </ul>
         </footer>
     </div>
