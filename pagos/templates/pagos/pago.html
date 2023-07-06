@@ -18,11 +18,19 @@
                     </thead>
                     <tbody>
 
+<<<<<<< HEAD
                         {% for p in productos %}
                         <tr>
                             <td>{{ p.id_bicicleta.nombre_bicicleta }}</td>
                             <td>{{ p.cantidad }}</td>
                             <td>{{ p.precio_total }}</td>
+=======
+                        {% for p in carrito %}
+                        <tr>
+                            <td>{{ p.nombre }}</td>
+                            <td>{{ p.cantidad }}</td>
+                            <td>{{ p.precio }}</td>
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
                         </tr>
                         {% endfor %}
 
@@ -32,7 +40,11 @@
             <div class="col-md-6">
                 <h2>Información de pago</h2>
                 
+<<<<<<< HEAD
                 <form method="POST" action="{% url 'pagoRealizado' %}">
+=======
+                <form method="POST" action="https://www.flow.cl/pago">
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
                     {% csrf_token %}
                     
                     <div class="form-group">

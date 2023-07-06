@@ -40,23 +40,39 @@
                     <li><a href="{% url 'productos' %}" class="nav-link px-2 text-white">Productos</a></li>
                     <li><a href="{% url 'ayuda' %}" class="nav-link px-2 text-white">Ayuda</a></li>
                     <li><a href="{% url 'seguimiento' %}" class="nav-link px-2 text-white">Seguimiento</a></li>
+<<<<<<< HEAD
                     {% if request.user.is_authenticated and request.user.is_staff %}
                     <li><a href="{% url 'agregar' %}" class="nav-link px-2 text-end">Agregar Producto</a></li>
                     {% endif %}
+=======
+                    <li><a href="#" class="nav-link px-2 text-white">
+                        {% if request.user.is_authenticated %}
+                          <b>Bienvenido, {{ user.username }}</b>
+                        {% endif %} 
+                      </a>
+                    </li>
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
                 </ul>        
                 <div class="text-end">
                   {% if request.user.is_authenticated %}
                     <a href="{% url 'logout' %}" class="btn btn-outline-light me-2" >Cerrar sesión</a>
                   {% else %}
                     <a href="{% url 'login' %}" class="btn btn-outline-light me-2" >Iniciar Sesión</a>
+<<<<<<< HEAD
                     <a href="{% url 'registro' %}" class="btn btn-warning">Registrar</a>
                   {% endif %}
     
                   
+=======
+                  {% endif %}
+    
+                  <a href="{% url 'registro' %}" class="btn btn-warning">Registrar</a>
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
     
                   <a href="{% url 'carrito_compras' %}">
                     <img src="{% static 'img/carro.png' %}" class="bd-placeholder-img" width="48px" height="40px" alt="carrito" />
                   </a>
+<<<<<<< HEAD
 
 
              
@@ -66,6 +82,10 @@
                     <b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" style="color: #ffc107;">Bienvenido: {{ user.username }}</b>
                   </a>{% endif %} 
                 
+=======
+                </div>
+                
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
             </div>
         </div>
     </header>

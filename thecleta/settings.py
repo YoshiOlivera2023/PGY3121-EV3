@@ -77,8 +77,13 @@ TEMPLATES = [
     },
 ]
 
+<<<<<<< HEAD
 LOGIN_REDIRECT_URL = '/administrador/index/'
 LOGOUT_REDIRECT_URL = '/administrador/index/'
+=======
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
 
 WSGI_APPLICATION = 'thecleta.wsgi.application'
 

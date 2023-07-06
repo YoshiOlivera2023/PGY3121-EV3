@@ -10,11 +10,19 @@
         <br>
         <div class="row">
             <div class="col-lg-12">
+<<<<<<< HEAD
                 <a href="{% url 'productos' %}" class="btn btn-warning">Añadir otro producto</a>
                 <br><br>
+=======
+
+                <a href="{% url 'productos' %}" class="btn btn-warning" >Añadir otro producto</a>
+                <br><br>    
+
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
                 <div class="table-main table-responsive">
                     <table class="table">
                         <thead class="table-dark">
+<<<<<<< HEAD
                             <tr>
                                 <th>Imagen</th>
                                 <th>Producto</th>
@@ -45,6 +53,33 @@
                         </tbody>
                     </table>
                     <br>
+=======
+                            <th>Imagen</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th>Eliminar</th>
+                        </thead>
+
+                        <tbody>
+                            {% if productoCarrito %}
+
+                                {% for i in productoCarrito %}
+                                    <tr> 
+                                        <td><img src="{{ i.bicicleta.imagen.url }}" alt="Imagen de bicicleta"></td>
+                                        <td>{{ i.bicicleta.nombre_bicicleta }}</td>
+                                        <td>{{ i.bicicleta.precio }}</td>
+                                        <td>{{ i.cantidad }}</td>
+                                        <td>{{ i.precio_total }}</td>
+                                        <td> <a href="{% url 'producto_del' pk=i.id_prod_carr %}"> Eliminar</a>
+                                    </tr>
+                                {% endfor %}
+                                
+                            {% endif %}
+                        </tbody>
+                    </table><br>
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
                 </div>
             </div>
         </div>
@@ -84,8 +119,14 @@
                     <hr>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="order-box">
                 <a href="{% url 'pago' %}" class="btn btn-primary">Realizar Pago</a>
+=======
+            <div class="col-lg-8 col-sm-12"></div>
+            <div class="col-12 d-flex shopping-box">
+                <a href="{% url 'pago' %}" class="btn btn-primary" >Pagar</a>
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
             </div>
         </div>
     </div>

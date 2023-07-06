@@ -21,6 +21,7 @@ def busqueda(request, cod):
         return render(request, 'seguimiento/seguimiento.html', context)
     else:
         return render(request, 'seguimiento/seguimiento.html', context)
+<<<<<<< HEAD
 
 def busquedaRealizada(request):
     if request.method == 'POST':
@@ -34,3 +35,5 @@ def busquedaRealizada(request):
         return render(request, 'seguimiento/seguimiento.html', context)
     else:
         return render(request, 'seguimiento/seguimiento.html', context)
+=======
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c

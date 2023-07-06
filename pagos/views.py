@@ -7,6 +7,7 @@ import random
 # Create your views here.
 
 def pago(request):
+<<<<<<< HEAD
     id_usuario=request.user.id
     productos = ProductoCarrito.objects.filter(Q(id_usuario=id_usuario) & Q(estado=''))
     context = {"productos": productos}
@@ -59,3 +60,7 @@ def pagoRealizado(request):
 
     context = {"numero":numero}
     return render(request, "pagos/ok.html", context)
+=======
+    context = {}
+    return render(request, "pagos/pago.html", context)
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c

@@ -10,7 +10,10 @@
         <div class="album py-5 bg-body-tertiary">
           <div class="container">
             <div class="row row-cols-1 row-cols-md-3 g-3">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
               {% for b in bicicletas %}
                 <div class="col-md-4 mb-4">
                   <div class="card h-100">
@@ -22,6 +25,7 @@
                       <p class="card-text"><b>Marca:</b> {{ b.id_marca.nombre_marca }}</p>
                       <p class="card-text">{{ b.descripcion }}</p>
                       <div class="mt-auto">
+<<<<<<< HEAD
                         <form action="{% url 'insertarCarrito' %}" method="POST">
                           {% csrf_token %}
                           <input type="hidden" name="bicicleta_id" value="{{ b.id_bicicleta }}">
@@ -34,11 +38,22 @@
                           {% endif %}
                         </form>
                       </div>
+=======
+                        {% if request.user.is_authenticated %}
+                          <a href="{% url 'carrito_compras' %}" class="btn btn-sm btn-outline-warning">Añadir al carrito</a>
+                        {% else %}
+                          <a href="{% url 'carrito_compras' %}" class="btn btn-sm btn-outline-warning">Compras</a>
+                        {% endif %}
+                      </div>                      
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
                     </div>
                   </div>
                 </div>
               {% endfor %}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
             </div>
           </div>
         </div>

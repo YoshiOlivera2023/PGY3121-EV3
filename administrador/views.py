@@ -39,6 +39,7 @@ def registro(request):
     if request.method == 'POST':
         user_creation_form = CustomUserCreationForm(data=request.POST)
 
+<<<<<<< HEAD
         if user_creation_form.is_valid():
             user_creation_form.save()
 
@@ -66,3 +67,18 @@ def agregar(request):
     bicicletas = Bicicleta.objects.all()
     context = {"bicicletas": bicicletas}
     return render(request, "bicicletas/listBici.html", context)
+=======
+# @login_required
+# def custom_login(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = authenticate(request, username=username, password=password)
+#         if user is not None:
+#             login(request, user)
+#             return redirect(reverse('administrador:index'))  # Redirige a la vista 'index' dentro de la aplicación 'administrador'
+#         else:
+#             return render(request, 'administrador/login.html', {'error': 'Usuario o contraseña incorrectos'})
+#     else:
+#         return render(request, 'administrador/login.html')
+>>>>>>> 9a38003a42b110fe87bd9095d930a442ebae2b1c
