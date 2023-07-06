@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +24,8 @@ urlpatterns = [
     path('bicicletas/', include('bicicletas.urls')),
     path('pagos/', include('pagos.urls')),
     path('seguimiento/', include('seguimiento.urls')),
+
+    path('accounts/', include('django.contrib.auth.urls')),
+
+    path('', lambda request: redirect('administrador/index'), name='root'),
 ]

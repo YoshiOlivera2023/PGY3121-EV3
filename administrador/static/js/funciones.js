@@ -424,21 +424,18 @@ function valSeguimiento(objeto) {
 function realizarSeg(){
     document.getElementById("buscar").addEventListener("click", function agregarEvento(event){
 
-        event.preventDefault();
+       
 
         let busqueda = valSeguimiento(document.getElementById("NroSeguimiento"));
 
         if(busqueda == true){
-            document.getElementById("mBusqueda").innerHTML = "Buscando...";
-            document.getElementById("mBusqueda").classList.remove("cuadroError");
-            document.getElementById("mBusqueda").classList.add("cuadroExito");
 
-            document.getElementById("mBusqueda").removeEventListener("click", agregarEvento);
         }
         else{
             document.getElementById("mBusqueda").innerHTML = "Revise su número de seguimiento ingresado.";
             document.getElementById("mBusqueda").classList.remove("cuadroExito");
             document.getElementById("mBusqueda").classList.add("cuadroError");
+            event.preventDefault();
         }
     })
 }

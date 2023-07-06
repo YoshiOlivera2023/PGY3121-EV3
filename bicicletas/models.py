@@ -21,7 +21,7 @@ class Bicicleta(models.Model):
     nombre_bicicleta    = models.CharField(max_length=100)
     descripcion         = models.TextField()
     precio              = models.IntegerField()
-    imagen              = models.ImageField(upload_to='img/')
+    imagen              = models.ImageField(upload_to='')
     id_categoria        = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     id_marca            = models.ForeignKey(Marca, on_delete=models.CASCADE)
 

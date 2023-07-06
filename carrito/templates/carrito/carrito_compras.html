@@ -1,99 +1,93 @@
 {% extends "administrador/base.html" %}
 {% load static %}
 
-
-
 {% block title %} TheCleta/Carrito de compras {% endblock %}
 
 {% block content %}
-
-
-
 <div class="cart-box-main">
     <div class="container">
         <h2>Carrito de compras</h2>
         <br>
         <div class="row">
             <div class="col-lg-12">
-
-                <div class="update-box">
-                    <input value="Añadir otro producto" type="submit">
-                </div>
-
+                <a href="{% url 'productos' %}" class="btn btn-warning">Añadir otro producto</a>
+                <br><br>
                 <div class="table-main table-responsive">
-
                     <table class="table">
-                        <th>Imagen</th>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Total</th>
-                        <th>Eliminar</th>
-
-                        {% if productoCarrito %}
-
-                            {% for i in productoCarrito %}
-                                <tr> 
-                                    <td><img src="{{ i.bicicleta.imagen.url }}" alt="Imagen de bicicleta"></td>
-                                    <td>{{ i.bicicleta.nombre_bicicleta }}</td>
-                                    <td>{{ i.bicicleta.precio }}</td>
-                                    <td>{{ i.cantidad }}</td>
-                                    <td>{{ i.precio_total }}</td>
-                                    <td> <a href="{% url 'producto_del' pk=i.id_prod_carr %}"> Eliminar</a>
-                                </tr>
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if productos %}
+                            {% for i in productos %}
+                            <tr>
+                                <td>
+                                    <img src="{% static 'img/productos/'|add:i.id_bicicleta.imagen.name %}" alt="Imagen de bicicleta" style="width: 70px; height: 50px;">
+                                </td>
+                                <td>{{ i.id_bicicleta.nombre_bicicleta }}</td>
+                                <td>${{ i.precio_total }}</td>
+                                <td>{{ i.cantidad }}</td>
+                                <td>${{ i.precio_total }}</td>
+                                <td>
+                                    <a href="{% url 'producto_del' pk=i.id_prod_carr %}" class="btn btn-danger btn-sm">Quitar producto</a>
+                                </td>
+                            </tr>
                             {% endfor %}
-                            
-                        {% endif %}
-                    </table><br>
+
+                            {% endif %}
+                        </tbody>
+                    </table>
+                    <br>
                 </div>
             </div>
         </div>
-
-        <div class="row my-5">
+       <!-- <div class="row my-5">
             <div class="col-lg-6 col-sm-6">
-                <div class="update-box">
-                    <input value="Actualizar carrito" type="submit">
+                <div class="btn-group" role="group">
+                    <input type="submit" value="Actualizar carrito" class="btn btn-warning">
                 </div>
             </div>
-        </div>
-
+        </div>-->
         <div class="row my-5">
             <div class="col-lg-4 col-sm-12">
                 <div class="order-box">
                     <h3>Resumen del pedido</h3>
-
+                    <hr>
                     <div class="d-flex">
-                        <h4>Sub Total</h4>
-                        <div class="ml-auto font-weight-bold"></div>
+                        <h4 class="text-left">Sub Total</h4>
+                        {% if suma_total %}
+                        <div class="ml-auto font-weight-bold text-right"><h4> $ {{ suma_total}}</h4></div>
+                        {% else %}
+                        <div class="ml-auto font-weight-bold text-right"><h4> $ 0</h4></div>
+                        {% endif %}
                     </div>
-
                     <div class="d-flex">
                         <h4>Descuento</h4>
-                        <div class="ml-auto font-weight-bold"></div>
+                        <div class="ml-auto font-weight-bold text-right"><h4>$ 0</h4></div>
                     </div>
-
-                    <hr class="my-1">
-                    <div class="d-flex">
-                        <h4>Cupón de descuento</h4>
-                        <div class="ml-auto font-weight-bold"></div>
-                    </div>
-
                     <hr>
                     <div class="d-flex gr-total">
-                        <h5>Total</h5>
-                        <div class="ml-auto h5"></div>
+                        <h3>Total</h3>
+                        {% if suma_total %}
+                        <div class="ml-auto h5 text-right"><h3>$ {{ suma_total }}</h3></div>
+                        {% else %}
+                        <div class="ml-auto h5 text-right"><h3>$ 0</h3></div>
+                        {% endif %}
                     </div>
-
                     <hr>
                 </div>
             </div>
-            <div class="col-lg-8 col-sm-12"></div>
-            <div class="col-12 d-flex shopping-box">
-                <input href="#"  value="Pagar" type="submit">
+            <div class="order-box">
+                <a href="{% url 'pago' %}" class="btn btn-primary">Realizar Pago</a>
             </div>
         </div>
-        
     </div>
 </div>
-
 {% endblock %}

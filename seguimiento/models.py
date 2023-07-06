@@ -14,7 +14,8 @@ class Ubicacion(models.Model):
 
 class Envio(models.Model):
     id_envio            = models.AutoField(primary_key=True)
+    codigo_seguimiento  = models.CharField(max_length=20, unique=True, default='')
     fecha_envio         = models.DateField()
     id_est_envio        = models.ForeignKey('seguimiento.EstadoEnvio', on_delete=models.CASCADE)
     id_pedido           = models.ForeignKey('carrito.Pedido', on_delete=models.CASCADE)
-    id_ubicacion        = models.ForeignKey('seguimiento.Ubicacion', on_delete=models.CASCADE)
+

@@ -1,0 +1,56 @@
+{% extends "administrador/base.html" %}
+{% load static %}
+
+{% block title %}TheCleta/Pago{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Resumen de la orden</h2><br>
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for p in productos %}
+                        <tr>
+                            <td>{{ p.id_bicicleta.nombre_bicicleta }}</td>
+                            <td>{{ p.cantidad }}</td>
+                            <td>{{ p.precio_total }}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h2>Información de pago</h2>
+                
+                <form method="POST" action="{% url 'pagoRealizado' %}">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" class="form-control" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="direccion">Dirección:</label>
+                        <input type="text" name="direccion" class="form-control" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="tarjeta">Número de tarjeta:</label>
+                        <input type="text" name="numero_tarjeta" class="form-control" required>
+                    </div><br>
+
+                    <button type="submit" class="btn btn-primary">Pagar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

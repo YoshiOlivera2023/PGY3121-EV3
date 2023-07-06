@@ -1,0 +1,46 @@
+{% extends "administrador/base.html" %}
+{% load static %}
+
+{% block title %}TheCleta/Seguimiento{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <form id="buscar" class="mt-5" method="POST" action="{% url 'busquedaRealizada' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="NroSeguimiento"><h5>Ingrese el número de seguimiento</h5></label>
+                    <input type="text" class="form-control" id="NroSeguimiento" name="NroSeguimiento" onblur="valSeguimiento(this)" placeholder="Ej.: 111222333444" required>                    
+                </div>
+                <br>
+                <button class="btn btn-warning btn-md btn-block" type="submit">Buscar</button>
+            </form>
+
+            {% if envio %}
+            <br>
+            <br>
+                <p>Seguimiento del envío: {{ NroSeguimiento }}</p>
+            <div class="col-lg-6"></div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ envio.fecha_envio }}</td>
+                            <td>{{ envio.id_est_envio.nombre_estado_env }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>     
+            {% else %}
+            {% endif %}   
+              
+        </div>
+    </div>
+</div>
+{% endblock %}

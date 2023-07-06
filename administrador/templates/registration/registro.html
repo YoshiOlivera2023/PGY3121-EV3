@@ -1,0 +1,23 @@
+{% extends "administrador/base.html" %}
+{% load static %}
+
+{% block title %}TheCleta/Log In{% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<h2 class="text-center mb-4">Formulario de Registro</h2> 
+
+<br>
+
+<form id="register-form" action="" method="post">
+    {% csrf_token %}
+
+    <div class="card mx-auto" style="width: 30rem;">
+      <div class="card-body">
+        <h5 class="card-title">Complete todos los campos</h5>
+        {{ form | crispy }}
+        <button class="btn btn-sm btn-warning float-end" type="submit">Registrarse</button>
+      </div>
+    </div>
+</form>
+{% endblock %}
